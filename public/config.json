@@ -17,7 +17,7 @@
         "execute": {
           "inArguments":[],
           "outArguments": [],
-          "url": "https://next-postbank-ca.herokuapp.com/journeybuilder/execute",
+          "url": "https://customactivitynext.herokuapp.com/journeybuilder/execute",
           "verb": "POST",
           "body": "",
           "header": "",
@@ -27,24 +27,24 @@
         }
     },
     "configurationArguments": {
-      "applicationExtensionKey": "bfa77e04-5158-4b21-90b7-cba66cf56ae6",
+      "applicationExtensionKey": "63e74d65-30eb-4e58-98c0-6d5685de76a9",
       "save": {
-        "url": "https://next-postbank-ca.herokuapp.com/journeybuilder/save",
+        "url": "https://customactivitynext.herokuapp.com/journeybuilder/save",
           "verb": "POST",
         "useJwt": true
        },
        "publish": {
-        "url": "https://next-postbank-ca.herokuapp.com/journeybuilder/publish",
+        "url": "https://customactivitynext.herokuapp.com/journeybuilder/publish",
            "verb": "POST",
         "useJwt": true
        },
       "stop": {
-        "url": "https://next-postbank-ca.herokuapp.com/journeybuilder/stop",
+        "url": "https://customactivitynext.herokuapp.com/journeybuilder/stop",
            "verb": "POST",
         "useJwt": true
       },
       "validate": {
-        "url": "https://next-postbank-ca.herokuapp.com/journeybuilder/validate",
+        "url": "https://customactivitynext.herokuapp.com/journeybuilder/validate",
         "verb": "POST",
         "useJwt": true
       }
