@@ -11,7 +11,7 @@ define(['postmonger'], function (Postmonger) {
     
     let currentStep = steps[0].key;
 
-    var user = '';
+    var user = 'test';
     var password = '';
     var MCClientId = '';
     var MCClientSecret = '';
@@ -28,9 +28,11 @@ define(['postmonger'], function (Postmonger) {
    
     function onRender() {
         // JB will respond the first time 'ready' is called with 'initActivity'
+        console.log($('#user').val())
         connection.trigger('ready');
         
-        connection.trigger('requestTokens');
+        let test = connection.trigger('requestTokens');
+        console.log(test)
         connection.trigger('requestEndpoints');
         connection.trigger('requestInteractionDefaults');
         connection.trigger('requestTriggerEventDefinition');
@@ -88,6 +90,7 @@ define(['postmonger'], function (Postmonger) {
 
     function clickedNext() {
         connection.trigger('nextStep');
+        sa
     }
 
     function clickedBack() {
@@ -104,9 +107,6 @@ define(['postmonger'], function (Postmonger) {
      * @param {*} stepIndex 
      */
     function showStep( step, stepIndex ) {
-        if ( stepIndex == 1 ) {
-            // step = steps[ stepIndex ]; 
-        }
 
         currentStep = step;
         
