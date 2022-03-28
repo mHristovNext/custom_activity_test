@@ -1,0 +1,39 @@
+{
+  "name": "jb-activity-template",
+  "version": "1.0.0",
+  "description": "Next Consult Custom Activity",
+  "engines": {
+    "node": "6.11.1"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "keywords": [
+    "journey",
+    "builder",
+    "salesforce marketing cloud",
+    "heroku"
+  ],
+  "author": "Next Consult",
+  "license": "",
+  "bugs": {},
+  "homepage": "",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "bower": "^1.8.0",
+    "errorhandler": "^1.5.0",
+    "express": "^4.15.4",
+    "jsonwebtoken": "^8.0.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.6",
+    "require": "^2.4.20",
+    "text-encoding": "^0.7.0",
+    "text-encoding-utf-8": "^1.0.2",
+    "node-cache": "^5.1.2",
+    "nodemailer": "^6.4.13"
+  }
+}

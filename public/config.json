@@ -1,0 +1,68 @@
+{
+    "workflowApiVersion": "1.0",
+    "metaData": {
+        "icon": "images/data.png",
+        "iconSmall": "",
+        "category": "flow"
+    },
+    "type": "REST",
+    "lang": {
+        "en-US": {
+            "name": "Retrive PDF",
+          "description": "Custom Activity for retrive pdf files",
+          "step1Label": "Configure Activity"
+        }
+    },
+    "arguments": {
+        "execute": {
+          "inArguments":[],
+          "outArguments": [],
+          "url": "https://next-postbank-ca.herokuapp.com/journeybuilder/execute",
+          "verb": "POST",
+          "body": "",
+          "header": "",
+          "format": "json",
+          "useJwt": true,
+          "timeout": 30000
+        }
+    },
+    "configurationArguments": {
+      "applicationExtensionKey": "bfa77e04-5158-4b21-90b7-cba66cf56ae6",
+      "save": {
+        "url": "https://next-postbank-ca.herokuapp.com/journeybuilder/save",
+          "verb": "POST",
+        "useJwt": true
+       },
+       "publish": {
+        "url": "https://next-postbank-ca.herokuapp.com/journeybuilder/publish",
+           "verb": "POST",
+        "useJwt": true
+       },
+      "stop": {
+        "url": "https://next-postbank-ca.herokuapp.com/journeybuilder/stop",
+           "verb": "POST",
+        "useJwt": true
+      },
+      "validate": {
+        "url": "https://next-postbank-ca.herokuapp.com/journeybuilder/validate",
+        "verb": "POST",
+        "useJwt": true
+      }
+    },
+    "wizardSteps": [{ 
+          "label": "Enter Data",
+          "key": "step1"
+        },
+        { 
+          "label": "Check Viber Text",
+          "key": "step2"
+        }
+    ],
+    "userInterfaces": {
+        "configModal": {
+            "height": 600,
+            "width": 1100,
+          "fullscreen": false
+        }
+    }
+}
