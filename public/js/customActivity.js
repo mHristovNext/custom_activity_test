@@ -19,9 +19,8 @@ define(['postmonger'], function (Postmonger) {
     $(window).ready(onRender);
     
     connection.on('initActivity', initialize);
-    connection.on('requestedTokens', onGetTokens);
+    //connection.on('requestedTokens', onGetTokens);
     connection.on('requestedEndpoints', onGetEndpoints);
-
     connection.on('clickedNext', clickedNext);
     connection.on('clickedBack', clickedBack);
     connection.on('gotoStep', gotoStep);
@@ -141,7 +140,6 @@ define(['postmonger'], function (Postmonger) {
     
     function onGetTokens( tokens ) {
         console.log( tokens );
-        authTokens = tokens;
     }
 
     function onGetEndpoints( endpoints ) {
