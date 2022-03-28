@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 // dependencies
 const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
@@ -67,7 +69,7 @@ cache.set( 'token', token.token, expire );
 
 /**
  * @desc Postbank API credentials
- */
+ 
 const GRANT_TYPE = 'client_credentials';
 const CLIENT_ID = 'edb883df-f2a3-4cde-aaa1-bfaf61b0cff8';
 const CLIENT_SECRET = 'V0fD4pD2qE4iM7yS0vN8nU4nK4uH0pN7oM1xJ4uA0sS0kC3wK7';
@@ -82,21 +84,22 @@ const METHOD = 'POST';
 const HOST = 'gate.postbank.bg';
 const OAUTH_PATH = '/postbank/notifications/oauth2/token';
 const VIBER_PATH = '/postbank/notifications/api/viberMessage';
+*/
 
 /**
  * @desc Marketing cloud API credentials
  */
 const MC_GRANT_TYPE = 'client_credentials';
-const MC_CLIENT_ID = '0e8bh3jaxm5k3dwc4qyzlpx5';
-const MC_CLIENT_SECRET = 'hEVwSHQzX2Rrrpz4ED0105yW';
-const MC_ACCOUNT_ID = '510001942';
+const MC_CLIENT_ID = '13qqajnlsr9m654wxs900v3y';
+const MC_CLIENT_SECRET = 'm4VOwYROQkQt4HaDvgNPy0ju';
+const MC_ACCOUNT_ID = '100015631';
 const MC_CONTENT_TYPE = 'application/json';
-const MC_HOST = 'mcxm76rnzph90xdlcwcf04pb4bt1.auth.marketingcloudapis.com';
+const MC_HOST = 'mcf3lgm9bdfv0wpxc7ptkspjwc9y.auth.marketingcloudapis.com';
 const MC_OAUTH_PATH = '/v2/token';
 const MC_METHOD_INSERT = 'POST';
 const MC_METHOD_UPSERT = 'PUT';
-const MC_API_HOST = 'mcxm76rnzph90xdlcwcf04pb4bt1.rest.marketingcloudapis.com';
-const MC_API_PATH = '/hub/v1/dataevents/key:DEF062C4-94EF-4046-8976-570D6247C2F8/rowset';
+const MC_API_HOST = 'mcf3lgm9bdfv0wpxc7ptkspjwc9y.rest.marketingcloudapis.com';
+const MC_API_PATH = '/asset/v1/content/assets';
 const MC_ACCEPT = '*/*';
 const MC_ACCEPT_ENCODING = 'gzip, deflate, br';
 
@@ -137,7 +140,7 @@ const options = {
  * @var {object} VIBER_HEADERS      object with the header paramters    
  * @var {object} BODY_VIBER         object with the parameters required in the body of the request
  * @var {object} options_viber      object containing host, path, port and method
- */
+ 
 let VIBER_HEADERS = {
     'Host': 'gate.postbank.bg',
     'sourceSystem': 'SalesForce',
@@ -158,6 +161,7 @@ let options_viber = {
     port: 448,
     method: METHOD
 };
+*/
 
 /**
  * @desc construct the Marketing cloud token request
@@ -189,28 +193,6 @@ let MC_OAUTH_OPTIONS = {
     headers: MC_OAUTH_HEADERS,
 };
 
-/**
- * @desc construct the upsert row into marketing cloud data extension request
- * 
- * @var {object} MC_UPSERT_HEADERS  object with headers  
- * @var {object} MC_UPSERT_BODY     object for attribute values that will be upserted into DE
- * @var {object} MC_UPSERT_OPTIONS  object with host, path, port, method
- */
-let MC_UPSERT_HEADERS = {
-    'Host': MC_API_HOST,
-    'Content-Type': MC_CONTENT_TYPE,
-};
-
-let MC_UPSERT_BODY = [];
-
-let MC_UPSERT_OPTIONS = {
-    host: MC_API_HOST,
-    path: MC_API_PATH,
-    port: 443,
-    method: MC_METHOD_INSERT,
-};
-
-let transaction_id = ''; // variable to store the current executing request's response from postbank with the needed Transaction ID
 
 /**
  * @desc universal function used for all requests
@@ -314,26 +296,6 @@ function logData(req) {
         secure: req.secure,
         originalUrl: req.originalUrl
     });
-    
-    // var body = Buffer.from(req.body);
-    // console.log('body:  ' + body.toString);
-    // console.log('body: ' + util.inspect(req.body));
-    // console.log('headers: ' + req.headers);
-    // console.log('trailers: ' + req.trailers);
-    // console.log('method: ' + req.method);
-    // console.log('url: ' + req.url);
-    // console.log('params: ' + util.inspect(req.params));
-    // console.log('query: ' + util.inspect(req.query));
-    // console.log('route: ' + req.route);
-    // console.log('cookies: ' + req.cookies);
-    // console.log('ip: ' + req.ip);
-    // console.log('path: ' + req.path);
-    // console.log('host: ' + req.host);
-    // console.log('fresh: ' + req.fresh);
-    // console.log('stale: ' + req.stale);
-    // console.log('protocol: ' + req.protocol);
-    // console.log('secure: ' + req.secure);
-    // console.log('originalUrl: ' + req.originalUrl);
 
 }
 
@@ -412,17 +374,6 @@ exports.execute = function (req, res) {
             contactCounter = ++contactCounter;
 
             let errorStatus = ''; // catching promise rejection
-
-            // console.log('payload: ', decodedArgs);
-            console.log('payloadText: ', decodedArgs.viber);
-            console.log('contactCounter: ', contactCounter);
-            console.log('Telephone: ', decodedArgs.Recipient);
-            // console.log('contactKey: ', decodedArgs.ContactKey);
-            // var ProductName = decodedArgs.ProductName;
-            // var Address = decodedArgs.Address;
-            // var viberTextString = decodedArgs.viber;
-            // var viberLiteralMessage = eval('`'+ viberTextString + '`');
-            // console.log('viberLiteralMessage: ', viberLiteralMessage);
 
             /**
              * @desc checking every cache object for its content. If it's null/expired:
@@ -578,16 +529,8 @@ exports.execute = function (req, res) {
              * @desc if emailIndex === 1 => there are errors. Send every 90seconds email, expiration time of the 
              *       cache that holds the error array is 100seconds.
              */
-            // setTimeout(() => {
-            //     if ( emailIndex === 1 ) {
-            //         emailIndex = 0;
-            //         sendEmails( decodedArgs );
-            //         console.log( 'email sending ');
-            //     }
-            // }, 90000);
-            // console.log( 'res: ', res );
+         
             logData(req);
-            // res.status(200).send( 'Execute' );
             res.status(200).json( {success: 'true'} );
         } else {
             console.log('564 -> FAILED');

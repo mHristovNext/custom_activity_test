@@ -54,7 +54,7 @@
           "key": "step1"
         },
         { 
-          "label": "Check Viber Text",
+          "label": "Check credentials",
           "key": "step2"
         }
     ],
