@@ -18,7 +18,7 @@ define(['postmonger'], function (Postmonger) {
     
     $(window).ready(onRender);
     
-    let test = connection.on('initActivity', initialize);
+    connection.on('initActivity', initialize);
     connection.on('requestedTokens', onGetTokens);
     connection.on('requestedEndpoints', onGetEndpoints);
 
@@ -28,11 +28,8 @@ define(['postmonger'], function (Postmonger) {
    
     function onRender() {
         // JB will respond the first time 'ready' is called with 'initActivity'
-        console.log($('#user').val())
         connection.trigger('ready');
-        
         connection.trigger('requestTokens');
-        console.log(test)
         connection.trigger('requestEndpoints');
         connection.trigger('requestInteractionDefaults');
         connection.trigger('requestTriggerEventDefinition');
