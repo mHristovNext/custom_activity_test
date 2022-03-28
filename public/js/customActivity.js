@@ -18,7 +18,7 @@ define(['postmonger'], function (Postmonger) {
     
     $(window).ready(onRender);
     
-    connection.on('initActivity', initialize);
+    let test = connection.on('initActivity', initialize);
     connection.on('requestedTokens', onGetTokens);
     connection.on('requestedEndpoints', onGetEndpoints);
 
@@ -31,7 +31,7 @@ define(['postmonger'], function (Postmonger) {
         console.log($('#user').val())
         connection.trigger('ready');
         
-        let test = connection.trigger('requestTokens');
+        connection.trigger('requestTokens');
         console.log(test)
         connection.trigger('requestEndpoints');
         connection.trigger('requestInteractionDefaults');
