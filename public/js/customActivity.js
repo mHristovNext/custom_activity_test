@@ -28,7 +28,7 @@ define(['postmonger'], function (Postmonger) {
     function onRender() {
         // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
-        //connection.trigger('requestTokens');
+        connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
         connection.trigger('requestInteractionDefaults');
         connection.trigger('requestTriggerEventDefinition');
@@ -40,6 +40,7 @@ define(['postmonger'], function (Postmonger) {
         if (data) {
             payload = data;
         }
+        cons
         
         var hasInArguments = Boolean(
             payload['arguments'] &&
@@ -85,8 +86,8 @@ define(['postmonger'], function (Postmonger) {
     }
 
     function clickedNext() {
-        connection.trigger('nextStep');
-        sa
+        /**connection.trigger('nextStep');**/
+        save();
     }
 
     function clickedBack() {
@@ -204,6 +205,19 @@ define(['postmonger'], function (Postmonger) {
         }
         payload['arguments'].execute.inArguments = [{}];
 
+        payload['arguments'].execute.inArguments[0] = holderPayloadData;
+
+        connection.trigger('updateActivity', payload);
+
+        let jsonString = JSON.stringify(holderPayloadData);
+
+        console.log( 'holderPayloadData JSON: ', JSON.stringify(holderPayloadData));
+        console.log( 'jsonstring: ', jsonstring);
+        console.log( 'holderPayloadData JSON.parse: ', JSON.parse(jsonstring));
+ 
+
+        payload['metaData'].isConfigured = true;
+        console.log('save');
         connection.trigger('updateActivity', payload);
     }
 });
